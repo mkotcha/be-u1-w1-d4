@@ -1,13 +1,15 @@
-public class Emplyees {
+package HumanResource;
 
+public class Employees {
+
+    public final double baseSalary = 1000;
     private final String id;
-    public double baseSalary;
     private double salary;
     private double hourSalary;
     private WorkLevel level;
     private Department department;
 
-    public Emplyees(String id, Department department) {
+    public Employees(String id, Department department) {
         this.id = id;
         this.department = department;
         this.salary = this.baseSalary;
@@ -15,8 +17,7 @@ public class Emplyees {
         this.level = WorkLevel.OPERAIO;
     }
 
-    public Emplyees(double baseSalary, String id, double salary, double hourSalary, WorkLevel level, Department department) {
-        this.baseSalary = baseSalary;
+    public Employees(String id, double salary, double hourSalary, WorkLevel level, Department department) {
         this.id = id;
         this.salary = salary;
         this.hourSalary = hourSalary;
@@ -24,11 +25,11 @@ public class Emplyees {
         this.department = department;
     }
 
-    public static double computeSalary(Emplyees employ) {
+    public static double computeSalary(Employees employ) {
         return employ.getSalary();
     }
 
-    public static double computeSalary(Emplyees employ, int overtime) {
+    public static double computeSalary(Employees employ, int overtime) {
         return employ.getSalary() + (employ.getHourSalary() * overtime);
     }
 
@@ -62,7 +63,7 @@ public class Emplyees {
 
     @Override
     public String toString() {
-        return "Emplyees{" +
+        return "HumanResource.Employees{" +
                 "id='" + id + '\'' +
                 ", baseSalary=" + baseSalary +
                 ", salary=" + salary +
@@ -77,21 +78,17 @@ public class Emplyees {
             case OPERAIO -> {
                 this.level = WorkLevel.IMPIEGATO;
                 this.salary = this.baseSalary * 1.2;
-                break;
             }
             case IMPIEGATO -> {
                 this.level = WorkLevel.QUADRO;
                 this.salary = this.baseSalary * 1.5;
-                break;
             }
             case QUADRO -> {
                 this.level = WorkLevel.DIRIGENTE;
                 this.salary = this.baseSalary * 2;
-                break;
             }
-            case DIRIGENTE -> {
-                System.out.println("errore non si può promuovere un dirigente");
-            }
+            case DIRIGENTE -> System.out.println("errore non si può promuovere un dirigente");
+
         }
         return this.level;
     }

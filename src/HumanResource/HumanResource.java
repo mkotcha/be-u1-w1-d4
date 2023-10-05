@@ -1,13 +1,11 @@
 package HumanResource;
 
-import java.time.LocalDate;
-
 public class HumanResource {
     private String fullName;
     private String email;
-    private LocalDate birthDate;
+    private String birthDate;
 
-    public HumanResource(String fullName, String email, LocalDate birthDate) {
+    public HumanResource(String fullName, String email, String birthDate) {
         this.fullName = fullName;
         this.email = email;
         this.birthDate = birthDate;
@@ -29,11 +27,11 @@ public class HumanResource {
         this.email = email;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

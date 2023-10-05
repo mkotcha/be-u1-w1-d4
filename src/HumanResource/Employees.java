@@ -1,6 +1,8 @@
 package HumanResource;
 
-public class Employees {
+import java.time.LocalDate;
+
+public class Employees extends HumanResource {
 
     public final double baseSalary = 1000;
     private final String id;
@@ -9,7 +11,8 @@ public class Employees {
     private WorkLevel level;
     private Department department;
 
-    public Employees(String id, Department department) {
+    public Employees(String fullName, String email, LocalDate birthDate, String id, Department department) {
+        super(fullName, email, birthDate);
         this.id = id;
         this.department = department;
         this.salary = this.baseSalary;
@@ -17,7 +20,8 @@ public class Employees {
         this.level = WorkLevel.OPERAIO;
     }
 
-    public Employees(String id, double salary, double hourSalary, WorkLevel level, Department department) {
+    public Employees(String fullName, String email, LocalDate birthDate, String id, double salary, double hourSalary, WorkLevel level, Department department) {
+        super(fullName, email, birthDate);
         this.id = id;
         this.salary = salary;
         this.hourSalary = hourSalary;

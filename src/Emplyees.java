@@ -24,6 +24,14 @@ public class Emplyees {
         this.department = department;
     }
 
+    public static double computeSalary(Emplyees employ) {
+        return employ.getSalary();
+    }
+
+    public static double computeSalary(Emplyees employ, int overtime) {
+        return employ.getSalary() + (employ.getHourSalary() * overtime);
+    }
+
     public double getBaseSalary() {
         return baseSalary;
     }
@@ -51,4 +59,41 @@ public class Emplyees {
     public WorkLevel getLevel() {
         return level;
     }
+
+    @Override
+    public String toString() {
+        return "Emplyees{" +
+                "id='" + id + '\'' +
+                ", baseSalary=" + baseSalary +
+                ", salary=" + salary +
+                ", hourSalary=" + hourSalary +
+                ", level=" + level +
+                ", department=" + department +
+                '}';
+    }
+
+    public WorkLevel promotion() {
+        switch (this.level) {
+            case OPERAIO -> {
+                this.level = WorkLevel.IMPIEGATO;
+                this.salary = this.baseSalary * 1.2;
+                break;
+            }
+            case IMPIEGATO -> {
+                this.level = WorkLevel.QUADRO;
+                this.salary = this.baseSalary * 1.5;
+                break;
+            }
+            case QUADRO -> {
+                this.level = WorkLevel.DIRIGENTE;
+                this.salary = this.baseSalary * 2;
+                break;
+            }
+            case DIRIGENTE -> {
+                System.out.println("errore non si può promuovere un dirigente");
+            }
+        }
+        return this.level;
+    }
+
 }
